@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfumería Fénix Premium</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SECCIÓN HERO DE PRESENTACIÓN -->
+  <section class="hero">
+    <div class="hero-contenido">
+      <h1>Perfumería FÉNIX</h1>
+      <p class="hero-texto">
+        Donde la elegancia renace.  
+        Fragancias creadas para quienes conquistan sin hablar,  
+        para quienes dejan una huella antes de marcharse,  
+        para quienes entienden que el perfume no es aroma…  
+        **es presencia, poder y esencia eterna.**
+      </p>
+
+      <p class="hero-sub">
+        Inspirados en la alquimia antigua, mezclamos feromonas, extractos profundos,
+        aceites esenciales y notas exóticas para crear perfumes con carácter.
+        Cada aroma cuenta una historia…  
+        **¿Cuál será la tuya?**
+      </p>
+
+      <p class="hero-line">
+        “Un aroma no se lleva… se domina.”
+      </p>
+    </div>
+  </section>
+
+  <header>
+    <h1>Gestión de Perfumes — CRUD Profesional</h1>
+  </header>
+
+  <!-- BOTONES CRUD -->
+  <div class="botones-principales">
+    <button id="btnCargar">Cargar Mis Perfumes</button>
+    <button id="btnNuevo">Registrar Perfume</button>
+  </div>
+
+  <!-- MODAL CRUD -->
+  <div id="formulario" class="modal hidden">
+    <div class="modal-contenido">
+      <h2>Registrar Perfume</h2>
+
+      <label>Nombre</label>
+      <input id="nombre">
+
+      <label>Marca</label>
+      <input id="marca">
+
+      <label>Tipo</label>
+      <select id="tipo">
+        <option>Feromona</option>
+        <option>Aceite Esencial</option>
+        <option>Extracto</option>
+        <option>Eau de Parfum</option>
+        <option>Eau de Toilette</option>
+      </select>
+
+      <label>Intensidad (1-10)</label>
+      <input type="number" id="intensidad">
+
+      <label>Duración (horas)</label>
+      <input type="number" id="duracion">
+
+      <label>Notas</label>
+      <input id="notas">
+
+      <div class="modal-botones">
+        <button id="guardar">Guardar</button>
+        <button id="cancelar">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLA CRUD -->
+  <div class="tabla-container">
+    <h2 class="tabla-titulo">Listado de Perfumes Registrados</h2>
+    <table id="tablaPerfumes">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Marca</th>
+          <th>Tipo</th>
+          <th>Intensidad</th>
+          <th>Duración</th>
+          <th>Notas</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
