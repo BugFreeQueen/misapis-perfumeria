@@ -9,21 +9,28 @@ const tabla = document.querySelector("#tablaPerfumes tbody");
 
 let editandoID = null;
 
-// Mostrar modal
-btnNuevo.addEventListener("click", () => {
-  editandoID = null;
-  modal.classList.remove("hidden");
-});
-
-// Ocultar modal
-cancelar.addEventListener("click", () => modal.classList.add("hidden"));
-
-// Cargar perfumes
-btnCargar.addEventListener("click", async () => {
+async function cargarPerfumes() {
   const res = await fetch(BASE_URL);
   const data = await res.json();
   mostrarTabla(data);
+}
+
+btnNuevo.addEventListener("click", () => {
+  editandoID = null;
+
+  nombre.value = "";
+  marca.value = "";
+  tipo.value = "Feromona";
+  intensidad.value = "";
+  duracion.value = "";
+  notas.value = "";
+
+  modal.classList.remove("hidden");
 });
+
+cancelar.addEventListener("click", () => modal.classList.add("hidden"));
+
+btnCargar.addEventListener("click", cargarPerfumes);
 
 function mostrarTabla(lista) {
   tabla.innerHTML = "";
@@ -71,7 +78,7 @@ guardar.addEventListener("click", async () => {
   }
 
   modal.classList.add("hidden");
-  btnCargar.click();
+  cargarPerfumes();
 });
 
 // Editar perfume
@@ -90,13 +97,12 @@ window.editar = async (id) => {
   modal.classList.remove("hidden");
 };
 
-// Eliminar
+// Eliminar perfume
 window.eliminar = async (id) => {
   if (confirm("¿Eliminar este perfume?")) {
     await fetch(`${BASE_URL}/${id}`, { method: "DELETE" });
-    btnCargar.click();
+    cargarPerfumes();
   }
 };
 
-// Auto cargar
-btnCargar.click();
+cargarPerfumes();
