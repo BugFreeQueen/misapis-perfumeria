@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import perfumeRouter from "./perfume.routes.js";
-import ejemploRouter from './ejemplo.routes.js'; // Mantener otros routers si existen
-
+import ejemploRouter from './ejemplo.routes.js'; 
 const router = Router();
 
 router.use("/perfumes", perfumeRouter);
@@ -13,5 +12,3 @@ router.use((req, res) => {
 });
 
 export default router;
-
-
