@@ -1,11 +1,10 @@
 // db/cnn_mongodb.js
 import mongoose from 'mongoose';
 import colors from 'colors';
-import 'dotenv/config'; // Carga las variables de entorno
+import 'dotenv/config'; 
 
 let conectado = false;
 
-// ✅ Función principal para conectar a MongoDB
 export const conectarAMongoDB = async () => {
   if (conectado) {
     console.log('MongoDB ya está conectado ✅'.green);
@@ -27,10 +26,8 @@ export const conectarAMongoDB = async () => {
   }
 };
 
-// 🔄 Obtener el estado de la conexión
 export const estadoConexion = () => conectado;
 
-// 📡 Eventos de conexión
 const conexion = mongoose.connection;
 
 conexion.on('error', (err) => {
@@ -49,7 +46,6 @@ conexion.on('disconnected', () => {
   console.log('🟡 MongoDB se ha desconectado'.yellow);
 });
 
-// 🧹 Cerrar la conexión cuando el proceso finaliza
 process.on('SIGINT', async () => {
   console.log('🛑 Cerrando conexión con MongoDB...'.yellow);
   await conexion.close();
